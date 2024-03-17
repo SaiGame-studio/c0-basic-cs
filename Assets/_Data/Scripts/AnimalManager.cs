@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    protected List<FourLeg> fourLegs = new();
+    [SerializeField] protected List<Animal> animals = new();
 
     private void Start()
     {
@@ -15,46 +15,43 @@ public class AnimalManager : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            FourLeg fourLeg = child.GetComponent<FourLeg>();
-            this.fourLegs.Add(fourLeg);
+            Animal animal = child.GetComponent<Animal>();
+            this.animals.Add(animal);
         }
     }
 
     protected void MakeAnimalsDoSomething()
     {
-        foreach (FourLeg fourLeg in this.fourLegs)
+        foreach (Animal animal in this.animals)
         {
-            this.MakeAnimalDoSomething(fourLeg);
+            this.MakeAnimalDoSomething(animal);
         }
     }
 
-    protected void MakeAnimalDoSomething(FourLeg fourLeg)
+    protected void MakeAnimalDoSomething(Animal animal)
     {
-        string name = fourLeg.GetName();
-        string sound = fourLeg.MakeSound();
-        Debug.Log(name + ": " + sound);
-
-        Debug.Log("IsHasFur: " + fourLeg.IsHasFur());
+        string info = animal.GetInfo();
+        Debug.Log(animal.name + ": " + info);
     }
 
     protected void AddAnimalsToList2()
     {
         Dog dog = new();
-        this.fourLegs.Add(dog);
+        this.animals.Add(dog);
 
         Dog dog2 = new();
-        this.fourLegs.Add(dog2);
+        this.animals.Add(dog2);
 
         Cat cat = new();
-        this.fourLegs.Add(cat);
+        this.animals.Add(cat);
 
         Pig pig = new();
-        this.fourLegs.Add(pig);
+        this.animals.Add(pig);
 
         Pig pig2 = new();
-        this.fourLegs.Add(pig2);
+        this.animals.Add(pig2);
 
         Pig pig3 = new();
-        this.fourLegs.Add(pig3);
+        this.animals.Add(pig3);
     }
 }

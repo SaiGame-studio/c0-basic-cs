@@ -7,7 +7,7 @@ public abstract class Animal : MonoBehaviour
     int legCount = 2;
     float weight = 0f;
 
-    private void Start()
+    private void Awake()
     {
         this.RandomWeight();
     }
@@ -17,6 +17,7 @@ public abstract class Animal : MonoBehaviour
 
     protected virtual void RandomWeight()
     {
+        Debug.Log(transform.name+": RandomWeight");
         this.weight = Random.Range(1f, 3f);
     }
 

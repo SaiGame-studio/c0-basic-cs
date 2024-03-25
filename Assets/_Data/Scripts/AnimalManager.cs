@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    protected List<FourLeg> fourLegs = new();
+    [SerializeField] protected List<Animal> fourLegs = new();
 
     private void Start()
     {
@@ -15,26 +15,23 @@ public class AnimalManager : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            FourLeg fourLeg = child.GetComponent<FourLeg>();
+            Animal fourLeg = child.GetComponent<Animal>();
             this.fourLegs.Add(fourLeg);
         }
     }
 
     protected void MakeAnimalsDoSomething()
     {
-        foreach (FourLeg fourLeg in this.fourLegs)
+        foreach (Animal fourLeg in this.fourLegs)
         {
             this.MakeAnimalDoSomething(fourLeg);
         }
     }
 
-    protected void MakeAnimalDoSomething(FourLeg fourLeg)
+    protected void MakeAnimalDoSomething(Animal fourLeg)
     {
-        string name = fourLeg.GetName();
-        string sound = fourLeg.MakeSound();
-        Debug.Log(name + ": " + sound);
-
-        Debug.Log("IsHasFur: " + fourLeg.IsHasFur());
+        string info = fourLeg.GetInfo();
+        Debug.Log(fourLeg.name + ": " + info);
     }
 
     protected void AddAnimalsToList2()

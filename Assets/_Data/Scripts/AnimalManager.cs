@@ -3,55 +3,64 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    [SerializeField] protected List<Animal> fourLegs = new();
+    [SerializeField] protected List<Animal> animals = new();
+    [SerializeField] protected List<Animal> softByWeight = new();
 
     private void Start()
     {
         this.AddAnimalsToList();
         this.MakeAnimalsDoSomething();
+        this.SoftAnimalsByWeight();
+    }
+
+    protected void SoftAnimalsByWeight()
+    {
+        Debug.Log("==== SoftAnimalsByWeight ====================");
+        this.softByWeight = new(this.animals); //Clone,Copy
     }
 
     protected void AddAnimalsToList()
     {
         foreach (Transform child in transform)
         {
-            Animal fourLeg = child.GetComponent<Animal>();
-            this.fourLegs.Add(fourLeg);
+            Animal animal = child.GetComponent<Animal>();
+            this.animals.Add(animal);
         }
     }
 
     protected void MakeAnimalsDoSomething()
     {
-        foreach (Animal fourLeg in this.fourLegs)
+        Debug.Log("==== MakeAnimalsDoSomething ====================");
+        foreach (Animal animal in this.animals)
         {
-            this.MakeAnimalDoSomething(fourLeg);
+            this.MakeAnimalDoSomething(animal);
         }
     }
 
-    protected void MakeAnimalDoSomething(Animal fourLeg)
+    protected void MakeAnimalDoSomething(Animal animal)
     {
-        string info = fourLeg.GetInfo();
-        Debug.Log(fourLeg.name + ": " + info);
+        string info = animal.GetInfo();
+        Debug.Log(animal.name + ": " + info);
     }
 
     protected void AddAnimalsToList2()
     {
         Dog dog = new();
-        this.fourLegs.Add(dog);
+        this.animals.Add(dog);
 
         Dog dog2 = new();
-        this.fourLegs.Add(dog2);
+        this.animals.Add(dog2);
 
         Cat cat = new();
-        this.fourLegs.Add(cat);
+        this.animals.Add(cat);
 
         Pig pig = new();
-        this.fourLegs.Add(pig);
+        this.animals.Add(pig);
 
         Pig pig2 = new();
-        this.fourLegs.Add(pig2);
+        this.animals.Add(pig2);
 
         Pig pig3 = new();
-        this.fourLegs.Add(pig3);
+        this.animals.Add(pig3);
     }
 }

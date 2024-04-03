@@ -17,6 +17,33 @@ public class AnimalManager : MonoBehaviour
     {
         Debug.Log("==== SoftAnimalsByWeight ====================");
         this.softByWeight = new(this.animals); //Clone,Copy
+        Animal animalX, animalY;
+        for (int x = 0; x < this.softByWeight.Count - 1; x++)
+        {
+            for (int y = x + 1; y < this.softByWeight.Count; y++)
+            {
+                animalX = this.softByWeight[x];
+                animalY = this.softByWeight[y];
+
+                if (animalX.GetWeight() > animalY.GetWeight())
+                {
+                    this.SwapAnimal(x,y);
+                }
+            }
+        }
+
+        foreach (Animal animal in this.softByWeight)
+        {
+            this.MakeAnimalDoSomething(animal);
+        }
+    }
+
+    protected void SwapAnimal(int x, int y)
+    {
+        Animal animalZ;
+        animalZ = this.softByWeight[y];
+        this.softByWeight[y] = this.softByWeight[x];
+        this.softByWeight[x] = animalZ;
     }
 
     protected void AddAnimalsToList()

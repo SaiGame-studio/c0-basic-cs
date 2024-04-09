@@ -3,27 +3,62 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
+    [SerializeField] protected List<Transform> defaultAnimals = new();
     [SerializeField] protected List<Animal> animals = new();
-    [SerializeField] protected List<Animal> softByWeight = new();
+    [SerializeField] protected List<Animal> sortByWeight = new();
 
     private void Start()
     {
+        this.LoadDefaultAnimals();
+        this.CreateRandomAnimals();
+
+
         this.AddAnimalsToList();
         this.MakeAnimalsDoSomething();
         this.SoftAnimalsByWeight();
     }
 
+    protected void CreateRandomAnimals()
+    {
+        int createCount = 20000;
+        for (int i = 0; i< createCount;i++)
+        {
+            this.CreateRandomAnimal();
+        }
+    }
+
+    protected void CreateRandomAnimal()
+    {
+        Transform randomChild = this.GetRandomFromDefaultAnimals();
+        Transform newChild = GameObject.Instantiate(randomChild);
+        newChild.parent = transform;
+    }
+
+    protected Transform GetRandomFromDefaultAnimals()
+    {
+        int randIndex = Random.Range(0, this.defaultAnimals.Count);
+        return this.defaultAnimals[randIndex];
+    }
+
+    protected void LoadDefaultAnimals()
+    {
+        foreach (Transform child in transform)
+        {
+            this.defaultAnimals.Add(child);
+        }
+    }
+
     protected void SoftAnimalsByWeight()
     {
         Debug.Log("==== SoftAnimalsByWeight ====================");
-        this.softByWeight = new(this.animals); //Clone,Copy
+        this.sortByWeight = new(this.animals); //Clone,Copy
         Animal animalX, animalY;
-        for (int x = 0; x < this.softByWeight.Count - 1; x++)
+        for (int x = 0; x < this.sortByWeight.Count - 1; x++)
         {
-            for (int y = x + 1; y < this.softByWeight.Count; y++)
+            for (int y = x + 1; y < this.sortByWeight.Count; y++)
             {
-                animalX = this.softByWeight[x];
-                animalY = this.softByWeight[y];
+                animalX = this.sortByWeight[x];
+                animalY = this.sortByWeight[y];
 
                 if (animalX.GetWeight() > animalY.GetWeight())
                 {
@@ -32,7 +67,7 @@ public class AnimalManager : MonoBehaviour
             }
         }
 
-        foreach (Animal animal in this.softByWeight)
+        foreach (Animal animal in this.sortByWeight)
         {
             this.MakeAnimalDoSomething(animal);
         }
@@ -41,9 +76,9 @@ public class AnimalManager : MonoBehaviour
     protected void SwapAnimal(int x, int y)
     {
         Animal animalZ;
-        animalZ = this.softByWeight[y];
-        this.softByWeight[y] = this.softByWeight[x];
-        this.softByWeight[x] = animalZ;
+        animalZ = this.sortByWeight[y];
+        this.sortByWeight[y] = this.sortByWeight[x];
+        this.sortByWeight[x] = animalZ;
     }
 
     protected void AddAnimalsToList()

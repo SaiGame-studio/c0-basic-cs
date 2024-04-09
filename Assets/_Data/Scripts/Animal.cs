@@ -18,7 +18,7 @@ public abstract class Animal : MonoBehaviour
     protected virtual void RandomWeight()
     {
         Debug.Log(transform.name+": RandomWeight");
-        this.weight = Random.Range(1f, 3f);
+        this.weight = Random.Range(1f, 30f);
     }
 
     public virtual float GetWeight()

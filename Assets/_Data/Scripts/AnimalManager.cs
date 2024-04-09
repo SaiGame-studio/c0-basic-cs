@@ -3,55 +3,126 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    [SerializeField] protected List<Animal> fourLegs = new();
+    [SerializeField] protected List<Transform> defaultAnimals = new();
+    [SerializeField] protected List<Animal> animals = new();
+    [SerializeField] protected List<Animal> sortByWeight = new();
 
     private void Start()
     {
+        this.LoadDefaultAnimals();
+        this.CreateRandomAnimals();
+
+
         this.AddAnimalsToList();
         this.MakeAnimalsDoSomething();
+        this.SoftAnimalsByWeight();
+    }
+
+    protected void CreateRandomAnimals()
+    {
+        int createCount = 20000;
+        for (int i = 0; i< createCount;i++)
+        {
+            this.CreateRandomAnimal();
+        }
+    }
+
+    protected void CreateRandomAnimal()
+    {
+        Transform randomChild = this.GetRandomFromDefaultAnimals();
+        Transform newChild = GameObject.Instantiate(randomChild);
+        newChild.parent = transform;
+    }
+
+    protected Transform GetRandomFromDefaultAnimals()
+    {
+        int randIndex = Random.Range(0, this.defaultAnimals.Count);
+        return this.defaultAnimals[randIndex];
+    }
+
+    protected void LoadDefaultAnimals()
+    {
+        foreach (Transform child in transform)
+        {
+            this.defaultAnimals.Add(child);
+        }
+    }
+
+    protected void SoftAnimalsByWeight()
+    {
+        Debug.Log("==== SoftAnimalsByWeight ====================");
+        this.sortByWeight = new(this.animals); //Clone,Copy
+        Animal animalX, animalY;
+        for (int x = 0; x < this.sortByWeight.Count - 1; x++)
+        {
+            for (int y = x + 1; y < this.sortByWeight.Count; y++)
+            {
+                animalX = this.sortByWeight[x];
+                animalY = this.sortByWeight[y];
+
+                if (animalX.GetWeight() > animalY.GetWeight())
+                {
+                    this.SwapAnimal(x,y);
+                }
+            }
+        }
+
+        foreach (Animal animal in this.sortByWeight)
+        {
+            this.MakeAnimalDoSomething(animal);
+        }
+    }
+
+    protected void SwapAnimal(int x, int y)
+    {
+        Animal animalZ;
+        animalZ = this.sortByWeight[y];
+        this.sortByWeight[y] = this.sortByWeight[x];
+        this.sortByWeight[x] = animalZ;
     }
 
     protected void AddAnimalsToList()
     {
         foreach (Transform child in transform)
         {
-            Animal fourLeg = child.GetComponent<Animal>();
-            this.fourLegs.Add(fourLeg);
+            Animal animal = child.GetComponent<Animal>();
+            this.animals.Add(animal);
         }
     }
 
     protected void MakeAnimalsDoSomething()
     {
-        foreach (Animal fourLeg in this.fourLegs)
+        Debug.Log("==== MakeAnimalsDoSomething ====================");
+        foreach (Animal animal in this.animals)
         {
-            this.MakeAnimalDoSomething(fourLeg);
+            this.MakeAnimalDoSomething(animal);
         }
     }
 
-    protected void MakeAnimalDoSomething(Animal fourLeg)
+    protected void MakeAnimalDoSomething(Animal animal)
     {
-        string info = fourLeg.GetInfo();
-        Debug.Log(fourLeg.name + ": " + info);
+        string info = animal.GetInfo();
+        Debug.Log(animal.name + ": " + info);
     }
 
     protected void AddAnimalsToList2()
     {
         Dog dog = new();
-        this.fourLegs.Add(dog);
+        this.animals.Add(dog);
 
         Dog dog2 = new();
-        this.fourLegs.Add(dog2);
+        this.animals.Add(dog2);
 
         Cat cat = new();
-        this.fourLegs.Add(cat);
+        this.animals.Add(cat);
 
         Pig pig = new();
-        this.fourLegs.Add(pig);
+        this.animals.Add(pig);
 
         Pig pig2 = new();
-        this.fourLegs.Add(pig2);
+        this.animals.Add(pig2);
 
         Pig pig3 = new();
-        this.fourLegs.Add(pig3);
+        this.animals.Add(pig3);
     }
 }

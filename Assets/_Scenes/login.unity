@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f5db662acca8b4385df327c2db7bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showLog: 0
   defaultAnimals: []
   animals: []
   sortByWeight: []

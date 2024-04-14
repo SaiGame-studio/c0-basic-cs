@@ -3,19 +3,28 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
+    [SerializeField] protected bool showLog = true;
     [SerializeField] protected List<Transform> defaultAnimals = new();
     [SerializeField] protected List<Animal> animals = new();
     [SerializeField] protected List<Animal> sortByWeight = new();
 
     private void Start()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
+        Debug.Log("============ startTime: " + startTime);
+
         this.LoadDefaultAnimals();
         this.CreateRandomAnimals();
-
 
         this.AddAnimalsToList();
         this.MakeAnimalsDoSomething();
         this.SoftAnimalsByWeight();
+
+        long nowTime = UnixTime.GetUnixTimeMicro();
+        Debug.Log("============ nowTime: " + nowTime);
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("============  timeDiff: " + timeDiff);
     }
 
     protected void CreateRandomAnimals()
@@ -102,7 +111,7 @@ public class AnimalManager : MonoBehaviour
     protected void MakeAnimalDoSomething(Animal animal)
     {
         string info = animal.GetInfo();
-        Debug.Log(animal.name + ": " + info);
+        if(this.showLog == true) Debug.Log(animal.name + ": " + info);
     }
 
     protected void AddAnimalsToList2()

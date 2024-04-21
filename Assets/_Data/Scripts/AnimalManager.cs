@@ -11,7 +11,7 @@ public class AnimalManager : MonoBehaviour
     private void Start()
     {
         long startTime = UnixTime.GetUnixTimeMicro();
-        Debug.Log("============ startTime: " + startTime);
+        Debug.Log("== startTime: " + startTime);
 
         this.LoadDefaultAnimals();
         this.CreateRandomAnimals();
@@ -21,19 +21,24 @@ public class AnimalManager : MonoBehaviour
         this.SoftAnimalsByWeight();
 
         long nowTime = UnixTime.GetUnixTimeMicro();
-        Debug.Log("============ nowTime: " + nowTime);
+        Debug.Log("== nowTime: " + nowTime);
 
         float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
-        Debug.Log("============  timeDiff: " + timeDiff);
+        Debug.Log("==  timeDiff: " + timeDiff);
     }
 
     protected void CreateRandomAnimals()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
+
         int createCount = 20000;
         for (int i = 0; i< createCount;i++)
         {
             this.CreateRandomAnimal();
         }
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("== CreateRandomAnimals timeDiff: " + timeDiff);
     }
 
     protected void CreateRandomAnimal()
@@ -51,14 +56,21 @@ public class AnimalManager : MonoBehaviour
 
     protected void LoadDefaultAnimals()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
+
         foreach (Transform child in transform)
         {
             this.defaultAnimals.Add(child);
         }
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("== LoadDefaultAnimals timeDiff: " + timeDiff);
     }
 
     protected void SoftAnimalsByWeight()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
+
         Debug.Log("==== SoftAnimalsByWeight ====================");
         this.sortByWeight = new(this.animals); //Clone,Copy
         Animal animalX, animalY;
@@ -80,6 +92,9 @@ public class AnimalManager : MonoBehaviour
         {
             this.MakeAnimalDoSomething(animal);
         }
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("== SoftAnimalsByWeight timeDiff: " + timeDiff);
     }
 
     protected void SwapAnimal(int x, int y)
@@ -92,20 +107,30 @@ public class AnimalManager : MonoBehaviour
 
     protected void AddAnimalsToList()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
+
         foreach (Transform child in transform)
         {
             Animal animal = child.GetComponent<Animal>();
             this.animals.Add(animal);
         }
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("== AddAnimalsToList timeDiff: " + timeDiff);
     }
 
     protected void MakeAnimalsDoSomething()
     {
+        long startTime = UnixTime.GetUnixTimeMicro();
         Debug.Log("==== MakeAnimalsDoSomething ====================");
+
         foreach (Animal animal in this.animals)
         {
             this.MakeAnimalDoSomething(animal);
         }
+
+        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
+        Debug.Log("== MakeAnimalsDoSomething timeDiff: " + timeDiff);
     }
 
     protected void MakeAnimalDoSomething(Animal animal)

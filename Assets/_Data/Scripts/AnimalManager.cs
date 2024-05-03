@@ -6,7 +6,7 @@ public class AnimalManager : MonoBehaviour
     [SerializeField] protected bool showLog = true;
     [SerializeField] protected List<Transform> defaultAnimals = new();
     [SerializeField] protected List<Animal> animals = new();
-    [SerializeField] protected List<Animal> sortByWeight = new();
+    public List<Animal> Animals => animals;
 
     private void Start()
     {
@@ -18,7 +18,6 @@ public class AnimalManager : MonoBehaviour
 
         this.AddAnimalsToList();
         this.MakeAnimalsDoSomething();
-        this.SoftAnimalsByWeight();
 
         long nowTime = UnixTime.GetUnixTimeMicro();
         Debug.Log("== nowTime: " + nowTime);
@@ -67,43 +66,7 @@ public class AnimalManager : MonoBehaviour
         Debug.Log("== LoadDefaultAnimals timeDiff: " + timeDiff);
     }
 
-    protected void SoftAnimalsByWeight()
-    {
-        long startTime = UnixTime.GetUnixTimeMicro();
 
-        Debug.Log("==== SoftAnimalsByWeight ====================");
-        this.sortByWeight = new(this.animals); //Clone,Copy
-        Animal animalX, animalY;
-        for (int x = 0; x < this.sortByWeight.Count - 1; x++)
-        {
-            for (int y = x + 1; y < this.sortByWeight.Count; y++)
-            {
-                animalX = this.sortByWeight[x];
-                animalY = this.sortByWeight[y];
-
-                if (animalX.GetWeight() > animalY.GetWeight())
-                {
-                    this.SwapAnimal(x,y);
-                }
-            }
-        }
-
-        foreach (Animal animal in this.sortByWeight)
-        {
-            this.MakeAnimalDoSomething(animal);
-        }
-
-        float timeDiff = UnixTime.GetTimeDiffToNow(startTime);
-        Debug.Log("== SoftAnimalsByWeight timeDiff: " + timeDiff);
-    }
-
-    protected void SwapAnimal(int x, int y)
-    {
-        Animal animalZ;
-        animalZ = this.sortByWeight[y];
-        this.sortByWeight[y] = this.sortByWeight[x];
-        this.sortByWeight[x] = animalZ;
-    }
 
     protected void AddAnimalsToList()
     {
@@ -133,30 +96,9 @@ public class AnimalManager : MonoBehaviour
         Debug.Log("== MakeAnimalsDoSomething timeDiff: " + timeDiff);
     }
 
-    protected void MakeAnimalDoSomething(Animal animal)
+    public void MakeAnimalDoSomething(Animal animal)
     {
         string info = animal.GetInfo();
         if(this.showLog == true) Debug.Log(animal.name + ": " + info);
-    }
-
-    protected void AddAnimalsToList2()
-    {
-        Dog dog = new();
-        this.animals.Add(dog);
-
-        Dog dog2 = new();
-        this.animals.Add(dog2);
-
-        Cat cat = new();
-        this.animals.Add(cat);
-
-        Pig pig = new();
-        this.animals.Add(pig);
-
-        Pig pig2 = new();
-        this.animals.Add(pig2);
-
-        Pig pig3 = new();
-        this.animals.Add(pig3);
     }
 }

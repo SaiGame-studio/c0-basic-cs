@@ -364,10 +364,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 703619847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d1159f6644a164380191f8f8564e4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 420c838413b83d2409c855b70c47fd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalManager: {fileID: 703619848}
+  animalManager: {fileID: 0}
   sortByWeight: []
 --- !u!1 &942373773
 GameObject:

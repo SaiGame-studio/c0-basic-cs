@@ -10,6 +10,24 @@ public class AnimalManager : MonoBehaviour
 
     private void Start()
     {
+        //this.AnimalManaging();
+        Invoke(nameof(this.AnimalManaging), 7);
+        //InvokeRepeating(nameof(this.RepeateMe), 3, 2);
+        //InvokeRepeating(nameof(this.RepeateMe2), 7, 1);
+    }
+
+    protected void RepeateMe()
+    {
+        Debug.Log("hello 1");
+    }
+
+    protected void RepeateMe2()
+    {
+        Debug.Log("hello 2");
+    }
+
+    protected void AnimalManaging()
+    {
         long startTime = UnixTime.GetUnixTimeMicro();
         Debug.Log("== startTime: " + startTime);
 

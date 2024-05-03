@@ -12,7 +12,6 @@ public class AnimalSorting : MonoBehaviour
         this.SoftAnimalsByWeight();
     }
 
-
     protected void SoftAnimalsByWeight()
     {
         if (this.animalManager.Animals.Count == 0)

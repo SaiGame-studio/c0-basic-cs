@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
-    int legCount = 2;
-    float weight = 0f;
+    [SerializeField] protected int legCount = 2;
+    [SerializeField] protected float weight = 0f;
 
     private void Awake()
     {

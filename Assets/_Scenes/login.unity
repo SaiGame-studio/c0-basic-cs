@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f5db662acca8b4385df327c2db7bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showLog: 1
+  showLog: 0
   defaultAnimals: []
   animals: []
 --- !u!4 &703619849
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420c838413b83d2409c855b70c47fd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalManager: {fileID: 0}
+  animalManager: {fileID: 703619848}
   sortByWeight: []
 --- !u!1 &942373773
 GameObject:

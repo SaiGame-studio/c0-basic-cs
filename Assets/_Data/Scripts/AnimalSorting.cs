@@ -6,10 +6,26 @@ public class AnimalSorting : MonoBehaviour
 {
     [SerializeField] protected AnimalManager animalManager;
     [SerializeField] protected List<Animal> sortByWeight = new();
+    public List<Animal> SortByWeight => sortByWeight;
 
     void Start()
     {
         this.SoftAnimalsByWeight();
+    }
+
+    private void Reset()
+    {
+        this.LoadComponents();
+    }
+
+    protected void LoadComponents()
+    {
+        this.LoadAnimalManager();
+    }
+
+    protected void LoadAnimalManager()
+    {
+        this.animalManager = GetComponent<AnimalManager>();
     }
 
     protected void SoftAnimalsByWeight()

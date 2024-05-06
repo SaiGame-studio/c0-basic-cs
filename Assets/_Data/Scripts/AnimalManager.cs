@@ -11,7 +11,7 @@ public class AnimalManager : MonoBehaviour
     private void Start()
     {
         //this.AnimalManaging();
-        Invoke(nameof(this.AnimalManaging), 7);
+        Invoke(nameof(this.AnimalManaging), 2);
         //InvokeRepeating(nameof(this.RepeateMe), 3, 2);
         //InvokeRepeating(nameof(this.RepeateMe2), 7, 1);
     }

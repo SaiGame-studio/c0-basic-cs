@@ -44,11 +44,11 @@ public class AnimalMinMax : MonoBehaviour
     protected void GetAnimalMax()
     {
         int animalCount = this.animalSorting.SortByWeight.Count;
-        this.animalMin = this.animalSorting.SortByWeight[animalCount - 1];
+        this.animalMax = this.animalSorting.SortByWeight[animalCount - 1];
     }
 
     protected void GetAnimalMin()
     {
-        this.animalMax = this.animalSorting.SortByWeight[0];
+        this.animalMin = this.animalSorting.SortByWeight[0];
     }
 }

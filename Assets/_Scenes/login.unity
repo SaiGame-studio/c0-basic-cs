@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e1661bb6a9e440bfc967209ad56cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!1 &274166158
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7be04276d031c4e91d0e7e8b4ad4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!1 &424207429
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7be04276d031c4e91d0e7e8b4ad4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!4 &424207431
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c04abc66cfc604eab3d7b1cb1b713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!4 &607484364
 Transform:
   m_ObjectHideFlags: 0
@@ -310,6 +318,7 @@ GameObject:
   - component: {fileID: 703619849}
   - component: {fileID: 703619848}
   - component: {fileID: 703619850}
+  - component: {fileID: 703619851}
   m_Layer: 0
   m_Name: AnimalManager
   m_TagString: Untagged
@@ -369,6 +378,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalManager: {fileID: 703619848}
   sortByWeight: []
+--- !u!114 &703619851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703619847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc4b95d0cd63c844883b80813b08138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalSorting: {fileID: 703619850}
+  animalMax: {fileID: 0}
+  animalMin: {fileID: 0}
 --- !u!1 &942373773
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8efa7fc9c3db642ba52cd416847dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!1 &1346814234
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e1661bb6a9e440bfc967209ad56cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!1 &1451105845
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e1661bb6a9e440bfc967209ad56cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!1 &1668052753
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e1661bb6a9e440bfc967209ad56cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  legCount: 2
+  weight: 0
 --- !u!4 &1757860312
 Transform:
   m_ObjectHideFlags: 0

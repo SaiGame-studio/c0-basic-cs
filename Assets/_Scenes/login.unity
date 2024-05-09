@@ -371,7 +371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703619847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 420c838413b83d2409c855b70c47fd74, type: 3}
   m_Name: 
@@ -390,7 +390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc4b95d0cd63c844883b80813b08138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalManager: {fileID: 703619848}
   animalSorting: {fileID: 703619850}
+  animalMaxSorting: {fileID: 0}
+  animalMinSorting: {fileID: 0}
   animalMax: {fileID: 0}
   animalMin: {fileID: 0}
 --- !u!1 &942373773
